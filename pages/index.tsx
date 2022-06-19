@@ -1,9 +1,11 @@
 import { Page } from '../components/Page';
+import { Pagination } from '../components/product/Pagination';
+import { ProductList } from '../components/product/ProductList';
 
 const HomePage = () => {
   return (
     <Page>
-      <p className="font-bold text-3xl text-blue-600">Hello Pawi</p>
+      <h1 className="uppercase font-bold text-5xl text-green-500">Hello</h1>
     </Page>
   );
 };
