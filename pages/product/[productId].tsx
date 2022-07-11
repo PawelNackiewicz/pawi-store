@@ -14,7 +14,9 @@ const ProductIdPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>)
 export default ProductIdPage;
 
 export const getStaticPaths = async () => {
-  const data: Product[] = await (await fetch(`https://naszsklep.vercel.app/products`)).json();
+  const data: Product[] = await (
+    await fetch(`https://naszsklep-api.vercel.app/api/products`)
+  ).json();
 
   return {
     paths: data.map((product) => {
@@ -37,7 +39,7 @@ export const getStaticProps = async ({ params }: InferGetStaticPaths<typeof getS
   }
 
   const data: Product | null = await (
-    await fetch(`https://naszsklep.vercel.app/products/${params?.productId}`)
+    await fetch(`https://naszsklep-api.vercel.app/api/products/${params?.productId}`)
   ).json();
 
   return {
