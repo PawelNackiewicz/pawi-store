@@ -1,18 +1,15 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import React from 'react';
-import { Page } from '../../../components/Page';
 import { Pagination } from '../../../components/product/Pagination';
 import { ProductList } from '../../../components/product/ProductList';
 import { Product } from '../../../types/types';
 
 const PageIndexPage = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Page>
-      <div className="flex flex-col">
-        <ProductList products={products} />
-        <Pagination total={250} />
-      </div>
-    </Page>
+    <div className="flex flex-col">
+      <ProductList products={products} />
+      <Pagination total={250} />
+    </div>
   );
 };
 

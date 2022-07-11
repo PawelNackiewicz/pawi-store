@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Navigation } from './Navigation';
 
-interface PageProps {
-  children: React.ReactNode;
+interface LayoutProps {
+  children: ReactNode;
 }
 
-export const Page = ({ children }: PageProps) => {
+export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="w-full h-full min-h-screen flex flex-col items-center antialiased bg-slate-100">
       <Navigation />
