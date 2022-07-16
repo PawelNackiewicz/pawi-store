@@ -1,7 +1,8 @@
 import React from 'react';
 import { InferGetStaticPropsType } from 'next';
-import { InferGetStaticPaths, Product } from '../../types/types';
+import { APIResponse, InferGetStaticPaths, Product } from '../../types/types';
 import { ProductDetails } from '../../components/product/ProductDetails';
+import { serialize } from 'next-mdx-remote/serialize';
 
 const ProductIdPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!data) {
@@ -38,13 +39,23 @@ export const getStaticProps = async ({ params }: InferGetStaticPaths<typeof getS
     };
   }
 
-  const data: Product | null = await (
+  const data: APIResponse | null = await (
     await fetch(`https://naszsklep-api.vercel.app/api/products/${params?.productId}`)
   ).json();
 
+  if (!data) {
+    return {
+      props: {},
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      data,
+      data: {
+        ...data,
+        longDescription: await serialize(data.longDescription),
+      },
     },
   };
 };
