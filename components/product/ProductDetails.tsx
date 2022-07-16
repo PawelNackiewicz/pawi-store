@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { Product } from '../../types/types';
 import { NextSeo } from 'next-seo';
+import { MarkdownWrapper } from '../MarkdownWrapper';
+import { MDXRemote } from 'next-mdx-remote';
 
 interface ProductDetailsProps {
   item: Product;
@@ -13,9 +15,9 @@ export const ProductDetails = ({ item }: ProductDetailsProps) => {
       <NextSeo
         title={item.title}
         description={item.description}
-        canonical={`https://https://pawi-store.vercel.app/${item.id}`}
+        canonical={`https://pawi-store.vercel.app/${item.id}`}
         openGraph={{
-          url: `https://https://pawi-store.vercel.app/${item.id}`,
+          url: `https://pawi-store.vercel.app/${item.id}`,
           title: item.title,
           description: item.description,
           images: [
@@ -38,6 +40,9 @@ export const ProductDetails = ({ item }: ProductDetailsProps) => {
       </div>
       <h3>{item.title}</h3>
       <p>{item.description}</p>
+      <article className="p-4 prose lg:prose-xl">
+        <MarkdownWrapper text={item.longDescription} />
+      </article>
     </div>
   );
 };
