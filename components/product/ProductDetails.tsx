@@ -13,9 +13,9 @@ export const ProductDetails = ({ item }: ProductDetailsProps) => {
       <NextSeo
         title={item.title}
         description={item.description}
-        canonical={`https://https://pawi-store.vercel.app/${item.id}`}
+        canonical={`https://pawi-store.vercel.app/${item.id}`}
         openGraph={{
-          url: `https://https://pawi-store.vercel.app/${item.id}`,
+          url: `https://pawi-store.vercel.app/${item.id}`,
           title: item.title,
           description: item.description,
           images: [
