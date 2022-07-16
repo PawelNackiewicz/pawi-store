@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Layout } from '../components/Layout';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
+import { CartProvider } from '../context/CartContext';
 
 const queryClient = new QueryClient();
 
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Layout>
       <DefaultSeo {...SEO} />
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <CartProvider>
+          <Component {...pageProps} />
+        </CartProvider>
       </QueryClientProvider>
     </Layout>
   );
