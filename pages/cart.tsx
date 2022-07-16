@@ -7,7 +7,7 @@ const Cart = () => {
   return (
     <div className="w-full">
       <ul>
-        {items.map((item) => (
+        {items?.map((item) => (
           <li key={item.id} className="grid grid-cols-10 gap-20">
             <p className="font-bold col-span-4">{item.title}</p>
             <p className="col-span-2">{item.count} x</p>
